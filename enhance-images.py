@@ -11,6 +11,8 @@ ABNORMAL_TRAIN_DIR = os.path.join(TRAIN_DIR, 'abnormal')
 NORMAL_TRAIN_DIR = os.path.join(TRAIN_DIR, 'normal')
 ABNORMAL_VALID_DIR = os.path.join(VALID_DIR, 'abnormal')
 NORMAL_VALID_DIR = os.path.join(VALID_DIR, 'normal')
+ABNORMAL_TEST_DIR = os.path.join(TEST_DIR, 'abnormal')
+NORMAL_TEST_DIR = os.path.join(TEST_DIR, 'normal')
 
 TRAIN_TXT = 'binary_train.txt'
 TEST_TXT = 'binary_test.txt'
@@ -83,17 +85,31 @@ for i in range(len(valid_img)):
             cv2.imwrite(os.path.join(NORMAL_VALID_DIR,str(file_name) + '_' + str(t) + '.' + file_tail), enhanced)
 
 # enhancing test set
-os.makedirs(TEST_TXT, exist_ok = True)
-for f in test_img:
-    file_name, file_tail = f[i].split('.')
-    img = cv2.read(os.path.join(ORIG_IMG_DIR, f))
-    cv2.imwrite(os.path.join(TEST_DIR,str(file_name) + '_0' + '.' + file_tail), img)
-    for t in range(5,31,5):
-        kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(i,i))
-        # method: enhanced contrast paper
-        opening = cv2.morphologyEx(img, cv2.MORPH_OPEN, kernel)
-        top = img - opening
-        closing = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)
-        bottom = closing - img
-        enhanced = img + top - bottom
-        cv2.imwrite(os.path.join(TEST_DIR,str(file_name) + '_' + str(t) + '.' + file_tail), enhanced)
+os.makedirs(ABNORMAL_TEST_DIR, exist_ok = True)
+os.makedirs(NORMAL_TEST_DIR, exist_ok = True)
+for i in range(len(test_img)):
+    file_name, file_tail = test_img[i].split('.')
+    img = cv2.read(os.path.join(ORIG_IMG_DIR, test_img[i]))
+    if test_indicator[i] == 1:
+        cv2.imwrite(os.path.join(ABNORMAL_TEST_DIR,str(file_name) + '_0' + '.' + file_tail), test_img[i]), img)
+        for t in range(5,31,5):
+            kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(i,i))
+            # method: enhanced contrast paper
+            opening = cv2.morphologyEx(img, cv2.MORPH_OPEN, kernel)
+            top = img - opening
+            closing = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)
+            bottom = closing - img
+            enhanced = img + top - bottom
+            cv2.imwrite(os.path.join(ABNORMAL_TEST_DIR,str(file_name) + '_' + str(t) + '.' + file_tail), enhanced)
+    else:
+        cv2.imwrite(os.path.join(NORMAL_TEST_DIR,str(file_name) + '_0' + '.' + file_tail), img)
+        for t in range(5,31,5):
+            kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(i,i))
+            # method: enhanced contrast paper
+            opening = cv2.morphologyEx(img, cv2.MORPH_OPEN, kernel)
+            top = img - opening
+            closing = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)
+            bottom = closing - img
+            enhanced = img + top - bottom
+            cv2.imwrite(os.path.join(NORMAL_TEST_DIR,str(file_name) + '_' + str(t) + '.' + file_tail), enhanced)
+
