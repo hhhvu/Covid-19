@@ -14,10 +14,10 @@ import json
 import pandas as pd
 
 # set up directories
-HUONG_DIR = ''
-TRAIN_DIR = os.path.join(HUONG_DIR, 'train')
-VALID_DIR = os.path.join(HUONG_DIR, 'valid')
-TEST_DIR = os.path.join(HUONG_DIR, 'test')
+CNN_DIR = 'CNN-model'
+TRAIN_DIR = os.path.join(CNN_DIR,'train')
+VALID_DIR = os.path.join(CNN_DIR,'valid')
+TEST_DIR = os.path.join(CNN_DIR,'test')
 
 
 # download inception_v3 model from tf
@@ -133,4 +133,4 @@ data = data.append(pd.DataFrame({'data_type': 'test',
                                 'softmax_0': X_test_softmax[:,0],
                                 'softmax_1': X_test_softmax[:,1],
                                 'actual': test_generator.classes}))
-data.to_csv(os.path.join(HUONG_DIR), 'output.csv'), encoding='utf-8', index=False)
+data.to_csv(os.path.join(CNN_DIR), 'output.csv'), encoding='utf-8', index=False)

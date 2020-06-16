@@ -2,11 +2,11 @@ import os
 import cv2
 
 # set up directories
-ORIG_IMG_DIR = ''
-HUONG_DIR = ''
-TRAIN_DIR = os.path.join(HUONG_DIR,'train')
-VALID_DIR = os.path.join(HUONG_DIR, 'valid')
-TEST_DIR = os.path.join(HUONG_DIR, 'test')
+ORIG_IMG_DIR = '../dataset'
+CNN_DIR = 'CNN-model'
+TRAIN_DIR = os.path.join(CNN_DIR,'train')
+VALID_DIR = os.path.join(CNN_DIR, 'valid')
+TEST_DIR = os.path.join(CNN_DIR, 'test')
 ABNORMAL_TRAIN_DIR = os.path.join(TRAIN_DIR, 'abnormal')
 NORMAL_TRAIN_DIR = os.path.join(TRAIN_DIR, 'normal')
 ABNORMAL_VALID_DIR = os.path.join(VALID_DIR, 'abnormal')
