@@ -14,7 +14,7 @@ import json
 import pandas as pd
 
 # set up directories
-CNN_DIR = 'CNN-model'
+CNN_DIR = 'Huong/Covid-19'
 TRAIN_DIR = os.path.join(CNN_DIR,'train')
 VALID_DIR = os.path.join(CNN_DIR,'valid')
 TEST_DIR = os.path.join(CNN_DIR,'test')

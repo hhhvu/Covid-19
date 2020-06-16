@@ -2,11 +2,21 @@ import os
 import cv2
 
 # set up directories
-ORIG_IMG_DIR = '../dataset'
-CNN_DIR = 'CNN-model'
-TRAIN_DIR = os.path.join(CNN_DIR,'train')
-VALID_DIR = os.path.join(CNN_DIR, 'valid')
-TEST_DIR = os.path.join(CNN_DIR, 'test')
+ORIG_IMG_DIR = '../../dataset'
+# CNN_DIR = 'CNN-model'
+# TRAIN_DIR = os.path.join(CNN_DIR,'train')
+# VALID_DIR = os.path.join(CNN_DIR, 'valid')
+# TEST_DIR = os.path.join(CNN_DIR, 'test')
+# ABNORMAL_TRAIN_DIR = os.path.join(TRAIN_DIR, 'abnormal')
+# NORMAL_TRAIN_DIR = os.path.join(TRAIN_DIR, 'normal')
+# ABNORMAL_VALID_DIR = os.path.join(VALID_DIR, 'abnormal')
+# NORMAL_VALID_DIR = os.path.join(VALID_DIR, 'normal')
+# ABNORMAL_TEST_DIR = os.path.join(TEST_DIR, 'abnormal')
+# NORMAL_TEST_DIR = os.path.join(TEST_DIR, 'normal')
+
+TRAIN_DIR = os.path.join('train')
+VALID_DIR = os.path.join('valid')
+TEST_DIR = os.path.join('test')
 ABNORMAL_TRAIN_DIR = os.path.join(TRAIN_DIR, 'abnormal')
 NORMAL_TRAIN_DIR = os.path.join(TRAIN_DIR, 'normal')
 ABNORMAL_VALID_DIR = os.path.join(VALID_DIR, 'abnormal')
@@ -14,9 +24,9 @@ NORMAL_VALID_DIR = os.path.join(VALID_DIR, 'normal')
 ABNORMAL_TEST_DIR = os.path.join(TEST_DIR, 'abnormal')
 NORMAL_TEST_DIR = os.path.join(TEST_DIR, 'normal')
 
-TRAIN_TXT = 'binary_train.txt'
-TEST_TXT = 'binary_test.txt'
-VALID_TXT = 'binary_validate.txt'
+TRAIN_TXT = '../../Multitask-Learning-CXR/dataset/binary_train.txt'
+TEST_TXT = '../../Multitask-Learning-CXR/dataset/binary_test.txt'
+VALID_TXT = '../../Multitask-Learning-CXR/dataset/binary_validate.txt'
 
 # read train, valid, and test sets
 file = open(TRAIN_TXT, 'r')
