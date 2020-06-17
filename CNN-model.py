@@ -14,7 +14,7 @@ import json
 import pandas as pd
 
 # set up directories
-CNN_DIR = 'Huong/Covid-19'
+CNN_DIR = '../data'
 TRAIN_DIR = os.path.join(CNN_DIR,'train')
 VALID_DIR = os.path.join(CNN_DIR,'valid')
 TEST_DIR = os.path.join(CNN_DIR,'test')
@@ -133,4 +133,4 @@ data = data.append(pd.DataFrame({'data_type': 'test',
                                 'softmax_0': X_test_softmax[:,0],
                                 'softmax_1': X_test_softmax[:,1],
                                 'actual': test_generator.classes}))
-data.to_csv(os.path.join(CNN_DIR), 'output.csv'), encoding='utf-8', index=False)
+data.to_csv(os.path.join('output.csv'), encoding='utf-8', index=False)
